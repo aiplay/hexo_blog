@@ -5,7 +5,7 @@
 # Site
 title: 爱丸工作室
 subtitle: 追求极致，享受游戏带来的乐趣
-description: blog | lua | cocos2d-x | android
+description: 爱生活 | 爱丸子
 author: 俆基慧
 language: zh-Hans
 timezone:
@@ -65,7 +65,23 @@ pagination_dir: page
 ## Themes: http://hexo.io/themes/
 theme: next
 
+# 个人头像
+avatar: /images/avatar.jpg
+
+# 多说评论
 duoshuo_shortname: aiplay
+
+# 百度统计
+baidu_analytics: b2d1d608df6e1feb98359cf1c21b575e
+
+# 站内搜索
+swifytype_key: D7bsHQXQRhZPq-aoF3Pa
+
+socail:
+    Github: https://github.com/aiplay
+    Weibo: http://www.weibo.com/u/3175247962/home?wvr=5
+
+jiathis: true
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
