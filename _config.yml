@@ -7,7 +7,7 @@ title: 爱丸工作室
 subtitle: 追求极致，享受游戏带来的乐趣
 description: blog | lua | cocos2d-x | android
 author: 俆基慧
-language: zh-CN
+language: zh-Hans
 timezone:
 
 # URL
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: landscape-plus
+theme: next
 
 duoshuo_shortname: aiplay
 
