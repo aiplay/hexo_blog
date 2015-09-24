@@ -5,7 +5,7 @@ category: Cocos2d-x
 tag: Cocos2d-x
 ---
 
-## tolua++
+## 关于tolua++
 
 #### tolua如何工作
 
