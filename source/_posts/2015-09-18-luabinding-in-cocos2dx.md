@@ -123,6 +123,11 @@ tag: Cocos2d-x
  + __-o__ 指定生成C++代码的输出目录
  + __-n__ 指定输出文件的名称，默认为.ini文件中的prefix选项
 
-在cocos2d-x/tools/bindings-generator/targets/lua目录下，放有conversions.yaml文件以及一个templates目录，
+在cocos2d-x/tools/bindings-generator/targets/lua目录下，放有conversions.yaml文件以及一个templates目录，根据conversions.yaml配置与templates下的模板文件，通过clang来进行语法和词法分析来生成绑定代码。   
 
-## 添加自己的绑定代码
+## 相关参考
+
+ + [YAML简介](http://www.ibm.com/developerworks/cn/xml/x-cn-yamlintro/)
+ + [使用Python和Cheetah构建和扩充模板](https://www.ibm.com/developerworks/cn/opensource/os-pythcheetah/)
+ + [Parsing C++ in Python with Clang](http://eli.thegreenplace.net/2011/07/03/parsing-c-in-python-with-clang)
+ + [Implementing a code generator with libclang](http://szelei.me/code-generator/)
