@@ -1,3 +1,10 @@
+---
+layout: post
+title: 基于Cocos2d-x的lua绑定机制
+category: Cocos2d-x
+tag: Cocos2d-x
+---
+
 ## 关于tolua++
 
 ### tolua如何工作
