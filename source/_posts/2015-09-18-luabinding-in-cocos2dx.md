@@ -1,19 +1,12 @@
----
-layout: post
-title: 基于Cocos2d-x的lua绑定机制
-category: Cocos2d-x
-tag: Cocos2d-x
----
-
 ## 关于tolua++
 
-#### tolua如何工作
+### tolua如何工作
 
 [tolua++](https://github.com/LuaDist/toluapp)是[tolua](http://webserver2.tecgraf.puc-rio.br/~celes/tolua/)的扩展版本，一款能够极大地简化C/C++代码与Lua代码集成的工具。tolua基于一份简单干净的头文件，能够自动生成从Lua代码中访问C/C++特性的绑定代码，通过使用Lua API和标记方法工具，tolua来映射管理C/C++中的常量，外部变量，函数，类和方法来给Lua使用。
 
 使用tolua通常要先建立pkg文件，里面包含对应C/C++头文件中能够被tolua++解析的声明，如常量、变量、函数以及类等。tolua++会根据pkg文件，来生成用于C/C++源文件与Lua交互的c/cpp文件，从而实现Lua中访问指定的C/C++代码。其中，无论是C函数还是C++对象的方法，都一律导出为静态函数。
 
-#### 如何使用tolua
+### 如何使用tolua
 
 生成的tolua++可执行文件，支持一些可选选项，使用./tolua++ -h可进行查看。
 
@@ -35,7 +28,7 @@ tag: Cocos2d-x
 
 ## cocos2d-x的lua绑定机制
 
-#### 版本2.x实现
+### 版本2.x实现
 
 在本节主要基于quick-cocos2d-x的2.x版本来进行讲解分析。在quick根目录的lib下，Lua绑定相关的代码放置于luabinding目录下，其中build.sh用来生成绑定文件。
 
@@ -106,7 +99,7 @@ tag: Cocos2d-x
 
 回顾刚刚的build.sh，不难发现，实际上就是去调用quick-cocos2d-x的根目录下bin/compile_luabinding.sh脚本文件，该脚本又调用了bin/lib/compile_luabinding.php脚本文件，其中该目录下还有其他的php脚本文件，如compile_luabinding_functions.php文件中针对LUA_STRING等类型进行了特殊处理，与之前的cocos2d-x中原生处理LUA_FUNCTION的思路一致。
 
-#### 版本3.x实现
+### 版本3.x实现
 
 在cocos2d-x 3.x版本后，针对Lua的绑定做了一些变动，开发者们不需要再针对每一个要解析绑定的cpp文件来编写pkg(tolua)文件了。在cocos2d-x/tools/tolua目录下，我们发现有许多ini为后缀的文件。根据这些ini配置文件，执行同一目录下的genbindings.py就会生成绑定代码cpp/hpp文件于cocos2d-x/cocos/scripting/lua-bindings/auto目录下。具体如何添加自定义的C++类绑定给Lua使用，请参考官方帮助文档[如何使用 bindings-generator 自动生成 lua绑定](http://www.cocos.com/doc/article/index?type=wiki&url=/doc/cocos-docs-master/manual/framework/native/wiki/how-to-use-bindings-generator/zh.md)。
 
