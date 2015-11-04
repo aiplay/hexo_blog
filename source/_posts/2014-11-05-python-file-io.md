@@ -47,6 +47,12 @@ tag: python
 
     "My name is %s and weight is %d kg!" % ('Zara', 21)
 
+### 获取格式化时间
+
+    import time
+
+    time.strftime('%Y-%m-%d-%H:%M:%S',time.localtime(time.time()))
+
 ### 计算文件的MD5值
 
     from hashlib import md5
