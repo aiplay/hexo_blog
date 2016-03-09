@@ -41,9 +41,13 @@ OpenGL规范由1992年成立的OpenGL架构评审委员会（ARB）维护。ARB�
 
 [GLM](https://github.com/g-truc/glm)是一款仿照GLSL语言开发的C++图形软件数学库，它只包含C++的hpp头文件。与GLFW一样，它也可以通过Cmake来在Mac系统中编译，操作步骤类似，唯一不同的是，由于GLM仅仅包含头文件，所以编译不会生成静态库文件，只会生成/usr/local/include/glm目录。
 
+#### SOIL
+
+[SOIL](http://www.lonesock.net/soil.html)是一个跨平台的图片加载库，它支持加载多种图片格式，生成OpenGL的纹理。下载好该库的代码后，需要自己再编译一下。进入projects/makefile目录，新建立 _obj_ 目录，并修改makefile文件，在CXXFLAGS增加"-m64"选项，即 __CXXFLAGS = -O2 -s -Wall -m64__ 。然后在makefile目录执行 _make_ 和 _sudo make install_ ，将lib目录新生成的libSOIL.a库文件增加到xcode的链接库中。
+
 ### 使用Xcode建立项目
 
-打开Xcode，建立一个 __Command Line Tool__ 项目。在Build Settings中找到Search Paths选项，在Header Search Paths中加入 __/usr/local/include/GLFW__ 、 __/usr/local/include/glm__ 和 __/usr/local/include/GL__ ，在Library Search Paths中添加 __/usr/local/lib__ ，记住最右面要选择成recursive的，具体效果如下图显示。
+打开Xcode，建立一个 __Command Line Tool__ 项目。在Build Settings中找到Search Paths选项，在Header Search Paths中加入 __/usr/local/include/GLFW__ 、 __/usr/local/include/glm__ 、 __/usr/local/include__ 和 __/usr/local/include/GL__ ，在Library Search Paths中添加 __/usr/local/lib__ ，记住最右面要选择成recursive的，具体效果如下图显示。
 
 ![02](http://7xlmp2.com1.z0.glb.clouddn.com/2016-01-08-mac-config-opengl-02.png)
 
