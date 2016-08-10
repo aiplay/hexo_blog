@@ -15,7 +15,7 @@ Sol支持Lua的绝大多数版本，包括 5.1、5.2、5.3和LuaJit等，但由�
 
 ### 基础使用
 
-从Sol的[Github仓库](https://github.com/ThePhD/sol2)clone下代码后，我们发现其目录下很多test开头的cpp/hpp文件，这些文件里面有着大量的Sol的使用示例以及各种特性的展示，而在example目录下的cpp文件都仅仅是一些最基础的使用示例。为了方便测试和体验Sol，你也可以自己建立一些自己的test.cpp文件，首先你要在源文件中include引用sol.hpp头文件，这样才能使用Sol提供的接口。而在使用gcc编译的使用，需要指定关联头文件的路径，可以使用如下命令：
+从Sol的[Github仓库](https://github.com/ThePhD/sol2)clone下代码后，我们发现其目录下很多test开头的cpp/hpp文件，这些文件里面有着大量的Sol的使用示例以及各种特性的展示，而在example目录下的cpp文件都仅仅是一些最基础的使用示例。为了方便测试和体验Sol，你也可以自己建立一些自己的test.cpp文件，首先你要在源文件中include引用sol.hpp头文件，这样才能使用Sol提供的接口。而在使用gcc编译的时候，需要指定关联头文件的路径，可以使用如下命令：
 
 	g++ test.cpp -Isolpath/single/sol -llua -std=c++14
 
@@ -56,7 +56,7 @@ Sol支持Lua的绝大多数版本，包括 5.1、5.2、5.3和LuaJit等，但由�
 		lua.script(" local a = A.new(); a:foo(); ")
 	}
 
-上述程序中，将一个简单的类A绑定到了Lua代码中，在Lua代码中可以创建一个a对象并调用其成员函数foo()。其中，A类除了默认构造函数外，还有一个带参数的构造函数，需要使用sol::constructors来封装一个，并通过sol::types<>模板来指定其参数列表。
+上述程序中，将一个简单的类A绑定到了Lua代码中，在Lua代码中可以创建一个a对象并调用其成员函数foo()。其中，A类除了默认构造函数外，还有一个带参数的构造函数，需要使用sol::constructors进行封装，并通过sol::types<>模板来指定其参数列表。
 
 #### 设置全局函数
 
@@ -111,7 +111,7 @@ Sol支持Lua的绝大多数版本，包括 5.1、5.2、5.3和LuaJit等，但由�
 
 	lua.script("local t = { 1, 2, 3, 4 }; foo(t); ")
 
-通过上边Lua代码的调用，就一个内容是“1, 2, 3, 4”的table传给了C++层。
+通过上边Lua代码的调用，使得一个内容是“1, 2, 3, 4”的table传给了C++层。
 
 #### 遍历Lua传来的table
 
@@ -166,4 +166,85 @@ Sol支持Lua的绝大多数版本，包括 5.1、5.2、5.3和LuaJit等，但由�
 
 #### 让代码更加健壮
 
+由于在Lua中类型的概念很弱，函数定义的参数并不会指定具体类型，这导致当我们想调用某个C++绑定过来的接口传递table的时候，很有可能有意或无意传递了一个nil过去。如果该函数在C++中指定的类型是sol::table，而在Lua传递一个nil值会发生很多不可控的错误，因此需要我们针对这种情况特殊处理以保证代码更加健壮。
+
+无论是sol::object还是sol::table、sol::function等类型，都继承于sol::reference类。因此，可以通过定义在sol::reference中的 __valid()__ 函数即可判断当前对象是否可用。sol::table类型也可以通过 __empty()__ 来判断当前table是否包含内容。
+
+	void foo(sol::table t)
+	{
+		if (! t.valid() || t.empty())
+			return;
+		// 执行到这表明t并不为nil或是空表，可以继续代码逻辑
+	}
+
 #### 隐式传递Lua状态机
+
+虽然Sol帮我们封装了很多简单易用的接口，但实际开发过程中难免还是需要自己去和Lua状态机打交道。在之前代码经常出现的sol::state中，我们可以通过 __lua_state()__ 接口来获取lua_State指针。
+
+同时，Sol封装了一个sol::this_state结构体，可以方便地将其隐式地转成lua_State指针。在绑定到Lua中的C++函数里，可以在参数列表的任意位置添加sol::this_state声明，而在Lua代码中调用该函数时则可以忽略该参数，Sol会自动帮你将Lua代码执行时的状态机作为sol::this_state来进行传递。
+
+	void foo(sol::table t, sol::this_state l)
+	{
+		// 向Lua栈中push一个字符串
+		lua_pushstring(l, "hello");
+		// 构建一个sol::object对象
+		sol::object obj = sol::make_object(l, t);
+	}
+
+	int main(void)
+	{
+		sol::state lua;
+		lua.set_function("foo", foo);
+		// 执行Lua代码时，调用foo函数仅传递了一个table作为参数
+		lua.script("local t = { a = 1, b = 2 }; foo(t);");
+	}
+
+#### C++与Lua的返回值
+
+##### 接收来自Lua的多个返回值
+
+	int main () {
+        sol::state lua;
+
+        lua.script("function f (a, b, c) return a, b, c end");
+
+        std::tuple<int, int, int> result;
+        result = lua["f"](1, 2, 3);
+        // result == { 1, 2, 3 }
+        int a, int b;
+        std::string c;
+        sol::tie( a, b, c ) = lua["f"](1, 2, "bark");
+        // a == 1
+        // b == 2
+        // c == "bark"
+	}
+
+##### 返回多种类型给Lua
+
+在C++代码中，无法做到像Lua那样可以灵活地返回各种类型的值，但是我们可以利用sol::object来封装成不同的“Lua类型”返回给Lua层。
+
+	sol::object fancy_func (sol::object a, sol::object b, sol::this_state s) {
+        sol::state_view lua = s;
+        if (a.is<int>() && b.is<int>()) {
+                return sol::make_object(lua, a.as<int>() + b.as<int>());
+        }
+        else if (a.is<bool>()) {
+                bool do_triple = a.as<bool>();
+                return sol::make_object(lua, b.as<double>() * ( do_triple ? 3 : 1 ) );
+        }
+        return sol::make_object(lua, sol::nil);
+	}
+
+	sol::state lua;
+
+	lua["f"] = fancy_func;
+
+	int result = lua["f"](1, 2);
+	// result == 3
+	double result2 = lua["f"](false, 2.5);
+	// result2 == 2.5
+
+	// call in Lua, get result
+	lua.script("result3 = f(true, 5.5)");
+	double result3 = lua["result3"];
+	// result3 == 16.5
