@@ -27,6 +27,8 @@ OpenGL规范由1992年成立的OpenGL架构评审委员会（ARB）维护。ARB�
 	sudo make install
 这样在我们的系统目录/usr/local/include和/usr/local/lib下会生成GLEW的相关头文件与静态库文件，之后创建项目时我们会用到。
 
+<!-- more -->
+
 #### GLFW
 
 [GLFW](https://github.com/glfw/glfw)是一款开源、跨平台的图形窗口管理库，不仅可以用来管理窗口，还支持读取输入，处理事件等。

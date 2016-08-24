@@ -33,6 +33,8 @@ tag: Cocos2d-x
 
  更加详细的说明请参考[这里](http://webserver2.tecgraf.puc-rio.br/~celes/tolua/tolua-3.2.html)。
 
+<!-- more -->
+
 ## cocos2d-x的lua绑定机制
 
 ### 版本2.x实现

@@ -22,6 +22,8 @@ tag: Android
  + 并行协作开发
  	对于大型应用，独立的插件可以在不同的团队之间并行进行开发，缩短项目进程，提高开发效率。
 
+<!-- more -->
+
 ### 插件机制的具体实现
 
 目前在Android平台实现插件机制的方法主要包括两种： _宿主注册代理组件，反射绑定维护插件对应组件_ 和 _利用动态代理技术hook系统以管理运行插件_ 。目前使用这两种技术并在github上拥有2k+ star的开源项目有 [dynamic-load-apk](https://github.com/singwhatiwanna/dynamic-load-apk) 和 [DroidPlugin](https://github.com/Qihoo360/DroidPlugin)，下面来分别介绍一下。

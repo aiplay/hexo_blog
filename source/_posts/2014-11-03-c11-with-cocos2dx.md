@@ -20,6 +20,8 @@ tag: cocos2d-x
         listener->onTouchCancelled = CC_CALLBACK_2(Test::onTouchCancelled, this);
     }
 
+<!-- more -->>
+
 ## Lambda表达式
 
 语法格式：[捕捉块](参数)->返回值类型{主体}

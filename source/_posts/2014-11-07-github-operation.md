@@ -35,6 +35,8 @@ tag: git
 
     git commit -C HEAD -a -amend    #增补提交
 
+<!-- more -->
+
 ### 查看提交历史
 
     git log            #查看提交历史

@@ -15,6 +15,8 @@ Clang是一款针对C，C++和Object C的编译器前端。它是由Apple支持�
 
 于是当我被问关于解析C++的问题的时候，我的回答总是Clang。诚然，它还存在着一些小问题。人们喜欢pycparser因为它是Python实现的，而Clang的API接口是C++，并不是最极客并友好的语言，退一步来说。
 
+<!-- more -->
+
 ### libclang
 
 下面进入libclang。不太久之前，Clang的团队明智地意识到Clang并不仅仅可以用于编译器，也可以是分析C/C++/ObjC代码的工具。事实上，Apple的自研Xcode开发工具就是用Clang作为内置库来进行代码提示，交叉引用，等等。

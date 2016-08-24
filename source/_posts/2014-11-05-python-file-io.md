@@ -23,6 +23,8 @@ tag: python
 
     shutil.rmtree(path)
 
+<!-- more -->
+
 ### 创建单个（多个）目录
 
     os.mkdir(name)

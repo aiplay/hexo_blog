@@ -28,6 +28,8 @@ tag: vim
         ${1:some_text}${1/(o)|(t)|..*/(?1:ne)(?2:wo)/}
         endsnippet
 
+<!-- more -->
+
 #### 部分单词提示(以触发字结尾即可触发)
 
         snippet ri "rizer" i
