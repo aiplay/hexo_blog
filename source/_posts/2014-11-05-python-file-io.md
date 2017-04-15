@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Python中常用的相关文件操作
+date: 2014-11-05
 category: 编程语言
 tag: python
 ---

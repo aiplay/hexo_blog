@@ -1,6 +1,7 @@
 ---
 layout: post
 title: cocos2d-x 3.x 中用到的c11特性
+date: 2014-11-03
 category: cocos2d-x
 tag: cocos2d-x
 ---

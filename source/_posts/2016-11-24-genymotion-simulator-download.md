@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Genymotion模拟器下载失败的解决方案
+date: 2016-11-24
 category: 网络相关
 tag: Android
 ---

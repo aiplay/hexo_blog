@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 我的2014-2015
+date: 2015-11-03
 category: 个人随笔
 tag: 年度总结
 ---

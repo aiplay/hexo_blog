@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 基于Cocos2d-x的lua绑定机制
+date: 2015-09-18
 category: Cocos2d-x
 tag: Cocos2d-x
 ---
@@ -125,7 +126,7 @@ tag: Cocos2d-x
  + __-o__ 指定生成C++代码的输出目录
  + __-n__ 指定输出文件的名称，默认为.ini文件中的prefix选项
 
-在cocos2d-x/tools/bindings-generator/targets/lua目录下，放有conversions.yaml文件以及一个templates目录，根据conversions.yaml配置与templates下的模板文件，通过clang来进行语法和词法分析来生成绑定代码。   
+在cocos2d-x/tools/bindings-generator/targets/lua目录下，放有conversions.yaml文件以及一个templates目录，根据conversions.yaml配置与templates下的模板文件，通过clang来进行语法和词法分析来生成绑定代码。
 
 ## 相关参考
 

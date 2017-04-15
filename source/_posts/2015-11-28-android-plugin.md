@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Android插件机制研究分析
+date: 2015-11-28
 category: Android
 tag: Android
 ---

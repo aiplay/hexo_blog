@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 常用开源协议介绍
+date: 2015-01-24
 category: 编程相关
 tag: 开源
 ---

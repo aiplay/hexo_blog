@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Lua中实现面向对象
+date: 2016-12-01
 category: Lua
 tag: lua
 ---

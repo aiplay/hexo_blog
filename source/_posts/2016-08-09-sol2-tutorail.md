@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Sol2使用教程
+date: 2016-08-09
 category: Lua
 tag: lua binding
 ---

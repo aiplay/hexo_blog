@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 无处不在的Markdown
+date: 2015-01-29
 category: 编程相关
 tag: markdown
 ---

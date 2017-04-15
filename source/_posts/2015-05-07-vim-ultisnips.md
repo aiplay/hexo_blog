@@ -1,6 +1,7 @@
 ---
 layout: post
 title: VIM下使用自定义代码片段
+date: 2015-05-07
 category: 编辑器
 tag: vim
 ---

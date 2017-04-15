@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 常用的Git操作
+date: 2014-11-07
 category: Linux
 tag: git
 ---

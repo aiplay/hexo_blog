@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 在Python中使用Clang来解析C++【翻译】
+date: 2014-11-29
 category: 编程相关
 tag: python
 ---
