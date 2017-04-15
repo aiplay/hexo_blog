@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 在Mac系统上搭建OpenGL开发环境
-category: openGL
-tag: openGL
+date: 2016-01-08
+category: OpenGL
+tag: OpenGL
 ---
 
 ### 什么是OpenGL
