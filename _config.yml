@@ -68,9 +68,6 @@ theme: next
 # 个人头像
 avatar: /images/avatar.jpg
 
-# 多说评论
-duoshuo_shortname: aiplay
-
 # 百度统计
 baidu_analytics: b2d1d608df6e1feb98359cf1c21b575e
 
