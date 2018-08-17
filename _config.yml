@@ -80,7 +80,7 @@ social:
     Twitter: https://twitter.com/aiplayx
     知乎: https://www.zhihu.com/people/aiplay
 
-jiathis: true
+jiathis: false
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html

@@ -1,4 +1,4 @@
-title: about
+title: 关于作者
 type: "about"
 comments: false
 ---
@@ -16,4 +16,3 @@ comments: false
  + Email：aiplayx@gmail.com
  + QQ：361667260
  + Github：https://github.com/aiplay
- + 博客：http://aiplay.github.io/
